@@ -1,7 +1,6 @@
 "use client"
 
 
-import Error from 'next/error'
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '@/app/_utils/AppContext'
 import NumberSkeleton from '../skeleton/NumberSkeleton'

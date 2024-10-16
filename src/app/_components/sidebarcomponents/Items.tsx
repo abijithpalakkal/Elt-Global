@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react'
-import Image from 'next/image'
-import { Mail } from "lucide-react"
+import React from 'react'
+
 
 
 const Items = ({name,icon:Icon,toggle,isSelected,onClick}:{

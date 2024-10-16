@@ -10,7 +10,6 @@ import { Flag } from 'lucide-react';
 import QuestionSkeleton from '../skeleton/QuestionSkeleton';
 
 const Questions = () => {
-  const [questionId, setQuestionId] = useState("")
   const [data, setData] = useState<any>([])
   const [skeleton,setSkeleton] = useState(false)
   const [selected, setSelected] = useState<any | null>(null)

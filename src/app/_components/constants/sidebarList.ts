@@ -3,7 +3,6 @@ import {Settings} from 'lucide-react'
 import { Search } from "lucide-react"
 import { Mail } from "lucide-react"
 import { ChartNoAxesColumn  } from "lucide-react"
-import { ReactNode } from "react"
 
 interface SidebarItem {
     name: string;

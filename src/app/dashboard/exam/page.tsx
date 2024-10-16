@@ -6,7 +6,7 @@ import Questions from '../../_components/examComponents/Questions'
 import { useAppContext } from '@/app/_utils/AppContext'
 import SubmitModal from '@/app/_components/modals/submitModal'
 
-const page = () => {
+const Page = () => {
    const {modal} = useAppContext()
   return (
     <div className='md:flex justify-center h-full w-full'>
@@ -17,4 +17,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

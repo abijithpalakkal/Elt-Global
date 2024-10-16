@@ -1,7 +1,6 @@
 "use client"
 
 import React, { ReactNode } from 'react'
-import logo from "../../../public/activity.svg"
 import Image from 'next/image'
 import vector from "../../../public/Vector.svg"
 import menu from "../../../public/menu.svg"
