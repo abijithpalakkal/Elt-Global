@@ -1,3 +1,21 @@
+# ELT Global
+
+ELT Global is an interactive website featuring a quiz game with 30 multiple-choice questions (MCQs). Users can answer questions, flag them for later review, and test their knowledge in a fun and engaging way.
+
+## Live Demo
+
+[Live Link](https://elt-global.vercel.app/) - Explore the live application!
+
+## Getting Started
+
+To run the application in development mode, use the following command:
+
+```bash
+npm run dev
+
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
