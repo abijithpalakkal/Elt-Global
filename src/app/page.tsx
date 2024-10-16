@@ -13,7 +13,7 @@ router.push('/dashboard/exam')
 
   return (
     <div>
-      sfnhviueujvsljnv
+    
     </div>
   );
 }

@@ -1,3 +1,5 @@
+
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -30,25 +32,29 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  
   return (
     <html lang="en">
-      
+
       <body className={`${inter.className} bg-slate-200`}
       >
         <AppProvider>
-        <div className=" flex-row md:flex h-14 md:h-screen w-screen ">
-          <Sidebar />
-          <div className="w-full h-screen flex flex-col">
+      
+          <div className=" flex-row md:flex h-14 md:h-screen w-screen ">
             
-              <Navbar />
- 
-            <div className="h-full">
-              {children}
-            </div>
-          </div>
+            <Sidebar />
+            <div className="w-full h-screen flex flex-col">
 
-        </div>
-         </AppProvider>
+              <Navbar />
+
+              <div className="h-full">
+                {children}
+              </div>
+            </div>
+
+          </div>
+        </AppProvider>
 
       </body>
     </html>

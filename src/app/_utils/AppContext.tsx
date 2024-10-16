@@ -9,9 +9,10 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [qid, setQid] = useState<string | null>("q1");
   const [answered, setAnswered] = useState<any | null>({});
   const [flagged,setFlagged] = useState<[] | null>([]);
+  const [modal,setModal] = useState<boolean>(false)
 
   return (
-    <AppContext.Provider value={{ qno,setQno,qid,setQid,answered,setAnswered,flagged,setFlagged }}>
+    <AppContext.Provider value={{ qno,setQno,qid,setQid,answered,setAnswered,flagged,setFlagged,modal,setModal}}>
       {children}
     </AppContext.Provider>
   );

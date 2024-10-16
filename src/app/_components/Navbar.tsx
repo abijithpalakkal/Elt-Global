@@ -15,7 +15,7 @@ const Navbar = () => {
    }
    const handleLoremClick=()=>{
     setSelecetedItem("Lorem")
-    router.push('/dashboard/lorem');
+    router.push('/dashboard/exam');
 }
   return (
     <div className=' w-full  px-8 bg-white  border-l-2 hidden md:block'>

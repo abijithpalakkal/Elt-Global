@@ -7,17 +7,20 @@ import Timer from './helperComponents/Timer';
 import { ChevronLeft } from 'lucide-react'
 import { ChevronRight } from 'lucide-react';
 import { Flag } from 'lucide-react';
+import QuestionSkeleton from '../skeleton/QuestionSkeleton';
 
 const Questions = () => {
   const [questionId, setQuestionId] = useState("")
   const [data, setData] = useState<any>([])
+  const [skeleton,setSkeleton] = useState(false)
   const [selected, setSelected] = useState<any | null>(null)
-  const { qid, qno, answered, setAnswered, setFlagged, flagged, setQno } = useAppContext()
+  const { qid, qno, answered, setAnswered, setFlagged, flagged, setQno,setModal } = useAppContext()
 
 
   useEffect(() => {
     const fetchdata = async () => {
       try {
+        setSkeleton(true)
         setSelected(null)
         console.log(qid, qno);
         const response = await fetch(`${API_URL}/api/questions`);
@@ -32,6 +35,8 @@ const Questions = () => {
 
       } catch (error) {
         console.log(error)
+      }finally{
+      setSkeleton(false)
       }
 
     }
@@ -65,11 +70,16 @@ const Questions = () => {
       setQno(qno + 1)
     }
   }
+
+   const endExam=()=>{
+    setModal(true)
+  }
+
   return (
     <div className='p-2 h-full md:pl-0 md:w-1/2 '>
       <div className='bg-white h-full rounded-md'>
         <div className='p-5 flex flex-col md:justify-between h-full gap-5 md:gap-0'>
-          <div>
+          { !skeleton && <div>
             <div className='flex justify-between items-center  '>
               <p>MCQ-<span className='text-orange-500'>Q{qno}</span></p>
               <div className='bg-gray-50 py-1 px-2'>
@@ -89,10 +99,11 @@ const Questions = () => {
               </div>
             )
             )}
-          </div>
+          </div>}
+          {skeleton && <QuestionSkeleton/>}
           <div className='flex justify-between pt-4 border-t-2 border-slate-100 '>
             <div>
-              <div className='bg-black w-24 h-8 md:w-28 md:h-8 flex justify-center items-center rounded-3xl cursor-pointer'>
+              <div className='bg-black w-24 h-8 md:w-28 md:h-8 flex justify-center items-center rounded-3xl cursor-pointer' onClick={endExam}>
                 <p className=' text-[10px] md:text-[13px] text-white'>End and Submit</p>
               </div>
             </div>

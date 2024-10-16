@@ -4,11 +4,13 @@
 import Error from 'next/error'
 import React, { useEffect, useState } from 'react'
 import { useAppContext } from '@/app/_utils/AppContext'
+import NumberSkeleton from '../skeleton/NumberSkeleton'
 
 const QuestionNumber = () => {
 
   const [data, setData] = useState([])
   const [selected, setSelected] = useState<number>(1)
+  const[skeleton,setSkeleton] = useState(false)
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   console.log(API_URL)
 
@@ -18,12 +20,16 @@ const QuestionNumber = () => {
 
   useEffect(() => {
     const fetchdata = async () => {
+
       try {
+        setSkeleton(true)
         const reponse = await fetch(`${API_URL}/api/questions`)
         const data = await reponse.json()
         setData(data)
       } catch (error) {
         console.log(error)
+      }finally{
+        setSkeleton(false)
       }
 
     }
@@ -48,7 +54,7 @@ const QuestionNumber = () => {
         <div className='pb-5 border-b-2'>
           <p className='font-medium'>Overview</p>
         </div>
-        <div className='flex flex-wrap gap-2 mt-5'>
+        {!skeleton &&<div className='flex flex-wrap gap-2 mt-5'>
           {data?.map((item: any, index: number) => {
             const itemId = item?.id;
             let backgroundColor = 'bg-slate-100';
@@ -62,7 +68,7 @@ const QuestionNumber = () => {
             if (answered[itemId] && flagged?.includes(itemId)) {
               backgroundColor = 'bg-green-600';
             }
-            return (<div key={index + 1} className={`w-7 h-7 rounded-full flex justify-center items-center cursor-pointer ${selected === index + 1 ? 'border-orange-400 border-2' : ''}   ${backgroundColor} inline-block`} onClick={() => {
+            return (<div key={index + 1} className={`w-7 h-7 md:w-10 md:h-10 rounded-full flex justify-center items-center cursor-pointer ${selected === index + 1 ? 'border-orange-400 border-2' : ''}   ${backgroundColor} inline-block`} onClick={() => {
               if (itemId) {
                 questionClick(index + 1, itemId);
               }
@@ -71,7 +77,9 @@ const QuestionNumber = () => {
             </div>)
           })}
 
-        </div>
+        </div>}
+        {skeleton && <NumberSkeleton/>}
+        
       </div>
     </div>
   )
