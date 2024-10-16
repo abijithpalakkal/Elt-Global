@@ -41,7 +41,8 @@ const Sidebar = () => {
                 </div>
 
             </div>
-            <p className={`${toggle ? 'hidden' : "block"} text-slate-600 ml-2 hidden md:block`}>GENERAL</p>
+            {toggle && <p className={` text-slate-600 ml-2 hidden `}>GENERAL</p>}
+            {!toggle && <p className={` text-slate-600 ml-2 `}>GENERAL</p>}
             {sidebarList.map(({ name, icon }: {
                 name:string,
                 icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
