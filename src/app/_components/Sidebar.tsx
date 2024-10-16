@@ -23,24 +23,26 @@ const Sidebar = () => {
     const handleItemClick = (name: string) => {
         setIsSeleceted(name);
         if(name=="Dashboard"){
-            router.push(`/${name.toLowerCase()}`);
+            router.push(`/${name.toLowerCase()}/exam`);
         }
     }
 
     return (
-        <div className={`p-5 transition-all duration-500 ${toggle ? 'w-16' : 'w-64'} h-screen bg-white`}>
+        <div className={`p-5 transition-all duration-500 ${toggle ? 'md:w-16' : 'md:w-64'} h-14 md:h-screen bg-white`}>
 
-            <div className='flex gap-10 mb-10'>
+            <div className='flex justify-between md:justify-around mb-10'>
                 {!toggle && <div className='flex gap-3'>
                     <Image src={vector} alt="vector" />
                     <p className='text-xl font-semibold w-28'>ELT Global</p>
                 </div>}
                 <div className='flex align-middle' onClick={() => { toggleMenu() }}>
-                    <Image src={menu} alt="menu" />
+                    <div className='w-5'>
+                    <Image src={menu} alt="menu" className=''/>
+                    </div>
                 </div>
 
             </div>
-            <p className={`${toggle ? 'hidden' : "block"} text-slate-600 ml-2`}>GENERAL</p>
+            <p className={`${toggle ? 'hidden' : "block"} text-slate-600 ml-2 hidden md:block`}>GENERAL</p>
             {sidebarList.map(({ name, icon }: {
                 name:string,
                 icon: React.ComponentType<React.SVGProps<SVGSVGElement>>,
@@ -53,3 +55,5 @@ const Sidebar = () => {
 }
 
 export default Sidebar
+ 
+

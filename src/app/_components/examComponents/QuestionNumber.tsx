@@ -7,17 +7,14 @@ import { useAppContext } from '@/app/_utils/AppContext'
 
 const QuestionNumber = () => {
 
-  const [selectedNumber, setSelectedNumber] = useState<number | null>(null)
   const [data, setData] = useState([])
-  const [selected,setSelected] = useState<number>(1)
+  const [selected, setSelected] = useState<number>(1)
   const API_URL = process.env.NEXT_PUBLIC_API_URL;
   console.log(API_URL)
 
-  const {setQno,setQid,answered,flagged}=useAppContext()
+  const { setQno, setQid, answered, flagged, qno } = useAppContext()
 
-  const handleNumberClick = (number: number) => {
-    setSelectedNumber(number)
-  }
+
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -33,26 +30,43 @@ const QuestionNumber = () => {
     fetchdata()
   }, [])
 
-  const questionClick=(qno:number,qid:string)=>{
+  useEffect(() => {
     setSelected(qno)
-     setQno(qno)
-     setQid(qid)
+  }, [qno])
+
+
+
+  const questionClick = (qno: number, qid: string) => {
+    setSelected(qno)
+    setQno(qno)
+    setQid(qid)
   }
 
   return (
-    <div className='p-2 h-full w-1/4 '>
+    <div className='p-2 w-screen md:h-full md:w-1/4 '>
       <div className=' bg-white h-full px-5 py-6 rounded-md'>
         <div className='pb-5 border-b-2'>
           <p className='font-medium'>Overview</p>
         </div>
         <div className='flex flex-wrap gap-2 mt-5'>
           {data?.map((item: any, index: number) => {
-            const itemId = item?.id;  
-            return (<div key={index + 1} className={`w-7 h-7 rounded-full bg-slate-100 flex justify-center items-center cursor-pointer ${selected == index+1 ? ' border-orange-400 border-2':''}    ${answered[itemId] ? 'bg-green-600' : ''}  ${flagged?.includes(itemId)?"bg-orange-400":""}`} onClick={()=>{
+            const itemId = item?.id;
+            let backgroundColor = 'bg-slate-100';
+
+            if (answered[itemId]) {
+              backgroundColor = 'bg-green-600';
+            }
+            if (flagged?.includes(itemId)) {
+              backgroundColor = 'bg-orange-400';
+            }
+            if (answered[itemId] && flagged?.includes(itemId)) {
+              backgroundColor = 'bg-green-600';
+            }
+            return (<div key={index + 1} className={`w-7 h-7 rounded-full flex justify-center items-center cursor-pointer ${selected === index + 1 ? 'border-orange-400 border-2' : ''}   ${backgroundColor} inline-block`} onClick={() => {
               if (itemId) {
                 questionClick(index + 1, itemId);
               }
-              }}>
+            }}>
               {index + 1}
             </div>)
           })}

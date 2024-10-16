@@ -36,7 +36,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-slate-200`}
       >
         <AppProvider>
-        <div className="flex h-screen w-screen">
+        <div className=" flex-row md:flex h-14 md:h-screen w-screen ">
           <Sidebar />
           <div className="w-full h-screen flex flex-col">
             

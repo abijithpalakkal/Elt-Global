@@ -4,7 +4,7 @@ import Questions from '../../_components/examComponents/Questions'
 
 const page = () => {
   return (
-    <div className='flex justify-center h-full w-full'>
+    <div className='md:flex justify-center h-full w-full'>
        <QuestionNumber/>
        <Questions />
     </div>
