@@ -31,7 +31,6 @@ const Questions = () => {
           console.log(filteredData[0]?.id, 89)
           setSelected(answered[filteredData[0]?.id])
         }
-        setQid(answered[filteredData[0]?.id])
 
       } catch (error) {
         console.log(error)
