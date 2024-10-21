@@ -13,7 +13,7 @@ const Questions = () => {
   const [data, setData] = useState<any>([])
   const [skeleton,setSkeleton] = useState(false)
   const [selected, setSelected] = useState<any | null>(null)
-  const { qid, qno, answered, setAnswered, setFlagged, flagged, setQno,setModal } = useAppContext()
+  const { qid, qno, answered, setAnswered, setFlagged, flagged, setQno,setModal,setQid } = useAppContext()
 
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const Questions = () => {
           console.log(filteredData[0]?.id, 89)
           setSelected(answered[filteredData[0]?.id])
         }
+        setQid(answered[filteredData[0]?.id])
 
       } catch (error) {
         console.log(error)
@@ -57,7 +58,6 @@ const Questions = () => {
     }
   }
 
-
   const prev = () => {
     if (qno != 1) {
       setQno(qno - 1)
@@ -69,6 +69,7 @@ const Questions = () => {
       setQno(qno + 1)
     }
   }
+
 
    const endExam=()=>{
     setModal(true)
